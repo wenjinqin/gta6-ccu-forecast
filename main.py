@@ -11,9 +11,11 @@ curves across the comparable set:
     local vs a single global unlock, read from the case notes and each
     comparable's unlock text) weigh 1.0, the rest 0.3;
   - the five scored quantile levels are read off the weighted distribution
-    of log-ratios, then the spread around the median is scaled by 0.8 (a
-    calibration fitted on the four practice launches, where raw empirical
-    quantiles proved slightly too wide);
+    of log-ratios, then the spread around the median is scaled by 0.4 (a
+    calibration fitted on the four practice launches: the raw cross-title
+    dispersion proved far wider than any single launch's own outcome
+    spread, and a grid over the scale bottomed out in a shallow basin
+    around 0.35-0.45, so the middle of the basin is used);
   - each level's curve is smoothed over a 3-hour window before use, and the
     five quantiles of every hour are sorted so each row is non-decreasing.
 
@@ -40,7 +42,7 @@ OUTPUT_DIR = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
 LEVELS = [0.05, 0.25, 0.5, 0.75, 0.95]
 W_SAME_CLASS = 1.0
 W_OTHER_CLASS = 0.3
-SPREAD_SCALE = 0.8
+SPREAD_SCALE = 0.4
 SMOOTH_RADIUS = 1
 MIN_DAY_HOURS = 14
 
